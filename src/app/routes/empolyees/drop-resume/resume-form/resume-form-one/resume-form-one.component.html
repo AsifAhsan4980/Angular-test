@@ -1,0 +1,110 @@
+<div class="resume-form-one">
+    <nz-card [nzBordered]="false" [nzTitle]="generalCardTitleTemp">
+        <form nz-form [formGroup]="childForm">
+            <div formGroupName="general">
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.firstname' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="firstName" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.lastname' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="lastName" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.fathersname' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="fathersName" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24">{{ 'app.resumeform1.mothername' | translate }}</nz-form-label>
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="mothersName" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.gender' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="gender" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.dateofbirth' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <nz-date-picker
+                                    (ngModelChange)="onChange($event)"
+                                    style="width: 100%"
+                                    formControlName="dateOfBirth"
+                                ></nz-date-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="8" [nzSm]="8" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.maritialstatus' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="maritialStatus" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="8" [nzSm]="8" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.relagion' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="religion" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="8" [nzSm]="8" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform1.nationality' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="nationality" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>
+
+<ng-template #generalCardTitleTemp>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="24">
+            <h3>{{ 'app.rerumeform1.generalinformation' | translate }}</h3>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,70 @@
+<div class="employe-feed">
+    <ng-container>
+        <div *ngIf="filterTitle.length > 0">
+            <div *ngFor="let data of filterTitle; let i = index">
+                <nz-card class="employee-info">
+                    <div class="body" (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)">
+                        <div class="name">
+                            <b
+                                >{{ data.generalInfoDetails.firstName }} {{ data.generalInfoDetails.lastName }},
+                                {{ data.generalInfoDetails.currentDistrict }}</b
+                            >
+                            <button nz-button [routerLink]="['/employer', data.generalInfoDetails.resumeId]">
+                                {{ 'app.employeesearchresult.viewresume' | translate }}
+                            </button>
+                        </div>
+                        <div class="update">
+                            <p>Recently Updated: {{ _dateFormatter(data.generalInfoDetails.updatedOn) }}</p>
+                        </div>
+                        <ng-container>
+                            <div *ngFor="let expr of data.workExperienceDetails">
+                                <div>{{ expr.title }}: {{ expr.company }}</div>
+                            </div>
+                        </ng-container>
+                        <div class="status">
+                            <span>Bachelors</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <button class="add-to-project-btn" nz-button nzType="default">
+                            {{ 'app.employeesearchresult.addtoproject' | translate }}
+                        </button>
+                    </div>
+                </nz-card>
+            </div>
+        </div>
+        <div *ngIf="filterTitle.length === 0">
+            <div *ngFor="let data of resumeInfo.data; let i = index">
+                <nz-card class="employee-info">
+                    <div class="body" (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)">
+                        <div class="name">
+                            <b
+                                >{{ data.generalInfoDetails.firstName }} {{ data.generalInfoDetails.lastName }},
+                                {{ data.generalInfoDetails.currentDistrict }}</b
+                            >
+                            <button nz-button [routerLink]="['/employer', data.generalInfoDetails.resumeId]">
+                                {{ 'app.employeesearchresult.viewresume' | translate }}
+                            </button>
+                        </div>
+                        <div class="update">
+                            <p>Recently Updated: {{ _dateFormatter(data.generalInfoDetails.updatedOn) }}</p>
+                        </div>
+                        <ng-container>
+                            <div *ngFor="let expr of data.workExperienceDetails">
+                                <div>{{ expr.title }}: {{ expr.company }}</div>
+                            </div>
+                        </ng-container>
+                        <div class="status">
+                            <span>Bachelors</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <button class="add-to-project-btn" nz-button nzType="default">
+                            {{ 'app.employeesearchresult.addtoproject' | translate }}
+                        </button>
+                    </div>
+                </nz-card>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,64 @@
+<div class="resume-form-five">
+    <nz-card [nzBordered]="false" [nzTitle]="skillCardTitleTemp">
+        <form nz-form>
+            <div nz-row [nzGutter]="24">
+                <!-- Technical skill start-->
+                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                    <div nz-row>
+                        <div nz-col [nzSpan]="24">
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24">{{ 'app.resumeform5.newskills' | translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-select
+                                        nzMode="tags"
+                                        nzPlaceHolder="e.g. Angular"
+                                        [(ngModel)]="techSkillList"
+                                        [ngModelOptions]="{ standalone: true }"
+                                        (ngModelChange)="addSkill($event)"
+                                    >
+                                        <nz-option *ngFor="let l of technical" [nzLabel]="l.skillName" [nzValue]="l.skillName"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <!-- <div class="button-align" nz-col [nzSpan]="3">
+                            <button class="add-button" nz-button nzType="default" (click)="addSkill()">Add</button>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- Technical skill end-->
+                <!-- Language skill start-->
+                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                    <div nz-row>
+                        <div nz-col [nzSpan]="24">
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="24">{{ 'app.resumeform5.newlanguageskills' | translate }}</nz-form-label>
+                                <nz-form-control>
+                                    <nz-select
+                                        nzMode="tags"
+                                        nzPlaceHolder="e.g. English"
+                                        [(ngModel)]="lanSkillList"
+                                        [ngModelOptions]="{ standalone: true }"
+                                        (ngModelChange)="addLan($event)"
+                                    >
+                                        <nz-option *ngFor="let l of language" [nzLabel]="l.skillName" [nzValue]="l.skillName"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                </div>
+                <!-- Language skill end-->
+            </div>
+        </form>
+    </nz-card>
+</div>
+<ng-template #skillCardTitleTemp>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="24" class="heading">
+            <h3>{{ 'app.resumeform5.skills' | translate }}</h3>
+            <span>{{ 'app.resumeform5.addskills' | translate }}</span>
+        </div>
+        <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24" class="required"><span>* </span>{{ 'app.resume.required' | translate }}</div>
+    </div>
+</ng-template>

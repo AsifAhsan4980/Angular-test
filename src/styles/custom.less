@@ -1,0 +1,89 @@
+@primary-color: green;
+.custom-required-field {
+    color: red;
+}
+.center-container {
+    width: 70%;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 1000px) {
+    .center-container {
+        width: 100%;
+        margin: 10px auto;
+    }
+}
+// ::ng-deep .ant-checkbox-checked .ant-checkbox-inner {
+//     background-color: green;
+//     border-color: green;
+// }
+.custom-breadcumb {
+    a {
+        color: inherit;
+    }
+    .root_path {
+        margin-left: 5px;
+        padding-right: 8px;
+    }
+    .real_path {
+        margin-left: 8px;
+        color: rgba(0, 0, 0, 0.85);
+    }
+}
+.grid-action-btn {
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.grid-action-btn:hover {
+    color: #17636e;
+}
+.custom-menu-icon {
+    font-size: 25px;
+}
+.div-spin {
+    // text-align: center;
+    // background: rgba(0, 0, 0, 0.05);
+    // border-radius: 4px;
+    // margin-bottom: 20px;
+    // padding: 30px 50px;
+    // margin: 20px 0;
+    background: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.ant-table {
+    .ant-btn-icon-only {
+        margin-right: 5px;
+    }
+    .tbl-btn-delete {
+        margin-left: 0px !important;
+    }
+    .tbl-btn-delete:hover {
+        color: #ff4d4f;
+        border-color: #ff4d4f;
+    }
+}
+::ng-deep .vertical-center-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(100vw - 6px) !important;
+    .ant-modal-body {
+        max-height: calc(100vh - 108px) !important;
+        overflow: auto;
+    }
+}
+.sidebar-nav__item-link {
+    font-size: 16px;
+}
+.alain-default__collapsed .sidebar-nav:not(.sidebar-nav__sub) .sidebar-nav__item-link {
+    padding: 15px 0;
+}

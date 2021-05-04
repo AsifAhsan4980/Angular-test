@@ -1,0 +1,299 @@
+<div class="resume-form-seven">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzXs]="24" [nzMd]="18" [nzSm]="18">
+            <nz-card [nzBordered]="true" nzTitle="" [nzHoverable]="true">
+                <div class="margin_inside">
+                    <div class="content-align">
+                        <!-- <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill"></i>
+                        </div> -->
+                        <div class="card_title onhover">
+                            <span>{{ general.firstName }} {{ general.lastName }}</span>
+                        </div>
+                        <div class="details">
+                            <div>{{ contact.currentDistrict }}</div>
+                            <div>{{ contact.emailAddress }}</div>
+                            <div>{{ contact.mobileNumber }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="margin_inside">
+                    <div class="content-align">
+                        <!-- <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill"></i>
+                        </div> -->
+                        <div class="card_title onhover">
+                            <span>{{ 'app.resumeform7.careersummary' | translate }}</span>
+                        </div>
+                        <ng-container *ngIf="!hasExperience">
+                            <div class="details" *ngFor="let data of work">
+                                <div>{{ data.title }}</div>
+                                <div>{{ data.company }}, {{ data.city }}, {{ data.country }}</div>
+                                <div>
+                                    <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                                    <span *ngIf="data.endMonth != '' && data.endYear != ''">
+                                        To {{ data.endMonth }} {{ data.endYear }}</span
+                                    >
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <div class="details" *ngFor="let data of certificate">
+                            <div>{{ data.title }}</div>
+                            <div>
+                                <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                                <span *ngIf="data.endMonth != '' && data.endYear != ''"> To {{ data.endMonth }} {{ data.endYear }}</span>
+                            </div>
+                            <div>{{ data.description }}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- General Information start-->
+                <div class="margin_inside">
+                    <div class="content-align" *ngIf="!showGeneralEditForm">
+                        <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill" (click)="toggleForm('general')"></i>
+                        </div>
+                        <div class="card_title onhover">
+                            <span>{{ 'app.rerumeform1.generalinformation' | translate }}</span>
+                        </div>
+                        <div class="details">
+                            <div *ngIf="general">{{ general.firstName }} {{ general.lastName }}</div>
+                            <div *ngIf="general">{{ general.gender }}</div>
+                            <div>{{ dob }}</div>
+                            <div *ngIf="general">{{ general.nationality }}</div>
+                        </div>
+                    </div>
+                    <div class="content-align" *ngIf="showGeneralEditForm">
+                        <app-resume-form-one [childForm]="childForm"></app-resume-form-one>
+                        <div class="action-btn">
+                            <button
+                                nz-button
+                                nzType="default"
+                                class="save"
+                                (click)="saveData('general')"
+                                [disabled]="!this.childForm.controls.general.valid"
+                            >
+                                Save
+                            </button>
+                            <button nz-button nzType="danger" (click)="toggleForm('general')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- General Information end-->
+                <!-- Contact Information start-->
+                <div class="margin_inside">
+                    <div class="content-align" *ngIf="!showContactEditForm">
+                        <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill" (click)="toggleForm('contact')"></i>
+                        </div>
+                        <div class="card_title onhover">
+                            <span>{{ 'app.resumeform2.contactinformation' | translate }}</span>
+                        </div>
+                        <div class="details">
+                            <div>{{ pa }}</div>
+                            <div *ngIf="contact">{{ contact.emailAddress }}</div>
+                            <div *ngIf="contact">{{ contact.mobileNumber }}</div>
+                        </div>
+                    </div>
+                    <div class="content-align" *ngIf="showContactEditForm">
+                        <app-resume-form-two [childForm]="childForm"></app-resume-form-two>
+                        <div class="action-btn">
+                            <button
+                                nz-button
+                                nzType="default"
+                                class="save"
+                                (click)="saveData('contact')"
+                                [disabled]="!this.childForm.controls.contact.valid"
+                            >
+                                Save
+                            </button>
+                            <button nz-button nzType="danger" (click)="toggleForm('contact')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Information end-->
+                <!-- Education Information start-->
+                <div class="margin_inside">
+                    <div class="content-align" *ngIf="!showEducationEditForm">
+                        <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill" (click)="toggleForm('education')"></i>
+                        </div>
+                        <div class="card_title onhover">
+                            <span>{{ 'app.resumeform3.educationinformation' | translate }}</span>
+                        </div>
+                        <ng-container *ngIf="education">
+                            <div class="details" *ngFor="let data of education">
+                                <div>{{ getName(data.educationLevelId, 'level') }}, ({{ getName(data.educationFieldId, 'field') }})</div>
+                                <div>{{ data.institution }},{{ data.city }},{{ data.country }}</div>
+                                <div>{{ data.grade }}</div>
+                                <div>
+                                    <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                                    <span *ngIf="data.endMonth != '' && data.endYear != ''">
+                                        To {{ data.endMonth }} {{ data.endYear }}</span
+                                    >
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="content-align" *ngIf="showEducationEditForm">
+                        <app-resume-form-three [childForm]="childForm"></app-resume-form-three>
+                        <div class="action-btn">
+                            <button
+                                nz-button
+                                nzType="default"
+                                class="save"
+                                (click)="saveData('education')"
+                                [disabled]="!this.childForm.controls.education.valid"
+                            >
+                                Save
+                            </button>
+                            <button nz-button nzType="danger" (click)="toggleForm('education')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education Information end-->
+                <!-- Work Information start-->
+                <div class="margin_inside" *ngIf="!hasExperience">
+                    <div class="content-align" *ngIf="!showWorkEditForm">
+                        <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill" (click)="toggleForm('work')"></i>
+                        </div>
+                        <div class="card_title onhover">
+                            <span>{{ 'app.resumeform4.workexperience' | translate }}</span>
+                        </div>
+                        <ng-container *ngIf="work">
+                            <div class="details" *ngFor="let data of work">
+                                <div>{{ data.title }}</div>
+                                <div>{{ data.company }}, {{ data.city }}, {{ data.country }}</div>
+                                <div>
+                                    <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                                    <span *ngIf="data.endMonth != '' && data.endYear != ''">
+                                        To {{ data.endMonth }} {{ data.endYear }}</span
+                                    >
+                                </div>
+                                <div>{{ data.description }}</div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="content-align" *ngIf="showWorkEditForm">
+                        <app-resume-form-four [childForm]="childForm"></app-resume-form-four>
+                        <div class="action-btn">
+                            <button
+                                nz-button
+                                nzType="default"
+                                class="save"
+                                (click)="saveData('work')"
+                                [disabled]="!this.childForm.controls.work.valid"
+                            >
+                                Save
+                            </button>
+                            <button nz-button nzType="danger" (click)="toggleForm('work')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Work Information end-->
+                <!-- Skill start-->
+                <div class="margin_inside">
+                    <div class="content-align" *ngIf="!showSkillEditForm">
+                        <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill" (click)="toggleForm('skill')"></i>
+                        </div>
+                        <div class="card_title onhover">
+                            <span>{{ 'app.resumeform5.skills' | translate }}</span>
+                        </div>
+                        <ng-container *ngIf="skill">
+                            <div class="details">
+                                <nz-tag [nzColor]="'green'" *ngFor="let sk of skill">{{ sk.skillName }}</nz-tag>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="content-align" *ngIf="showSkillEditForm">
+                        <app-resume-form-five [childForm]="childForm"></app-resume-form-five>
+                        <div class="action-btn">
+                            <button
+                                nz-button
+                                nzType="default"
+                                class="save"
+                                (click)="saveData('skill')"
+                                [disabled]="!this.childForm.controls.certificate.valid"
+                            >
+                                Save
+                            </button>
+                            <button nz-button nzType="danger" (click)="toggleForm('skill')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill end-->
+                <!-- certificate Information start-->
+                <div class="margin_inside">
+                    <div class="content-align" *ngIf="!showCertificateEditForm">
+                        <div class="iconset">
+                            <i class="icon-set onhover" nz-icon nzType="edit" nzTheme="fill" (click)="toggleForm('certificate')"></i>
+                        </div>
+                        <div class="card_title onhover">
+                            <span>{{ 'app.resumeform6.licence&certificates' | translate }}</span>
+                        </div>
+                        <ng-container *ngIf="certificate">
+                            <div class="details" *ngFor="let data of certificate">
+                                <div>{{ data.title }}</div>
+                                <div>
+                                    <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                                    <span *ngIf="data.endMonth != '' && data.endYear != ''">
+                                        To {{ data.endMonth }} {{ data.endYear }}</span
+                                    >
+                                </div>
+                                <div>{{ data.description }}</div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="content-align" *ngIf="showCertificateEditForm">
+                        <app-resume-form-six [childForm]="childForm"></app-resume-form-six>
+                        <div class="action-btn">
+                            <button
+                                nz-button
+                                nzType="default"
+                                class="save"
+                                (click)="saveData('certificate')"
+                                [disabled]="!this.childForm.controls.certificate.valid"
+                            >
+                                Save
+                            </button>
+                            <button nz-button nzType="danger" (click)="toggleForm('certificate')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- certificate Information end-->
+            </nz-card>
+        </div>
+        <div nz-col [nzXs]="24" [nzMd]="6" [nzSm]="6">
+            <form nz-form>
+                <div nz-col [nzSpan]="24">
+                    <label nz-checkbox class="settings-checkbox">Delete this Resume</label>
+                </div>
+                <div nz-col [nzSpan]="24">
+                    <label nz-checkbox class="settings-checkbox">Download this Resume</label>
+                </div>
+                <div nz-col [nzSpan]="24">
+                    <label nz-checkbox class="settings-checkbox">Privacy Setting</label>
+                    <div class="radio-group">
+                        <div>
+                            <label nz-radio>Public</label>
+                            <p class="text-property">
+                                Your resume is visible to anyone. Only emplyees can view your detail resume. Contact informations are only
+                                shared after you establish connect with any employer using your internal application
+                            </p>
+                        </div>
+                        <div>
+                            <label nz-radio>Private</label>
+                            <p class="text-property">
+                                Your resume is not visible to anyone. Only you can view your resume and use this for for applying for any
+                                posted job at gonojobs
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

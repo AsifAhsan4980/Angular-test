@@ -1,0 +1,124 @@
+<div class="resume-form-container">
+    <nz-steps [nzCurrent]="current">
+        <nz-step></nz-step>
+        <nz-step></nz-step>
+        <nz-step></nz-step>
+    </nz-steps>
+    <div class="steps-content" *ngIf="current == 0">
+        <app-resume-form-one [childForm]="childForm"></app-resume-form-one>
+    </div>
+    <div class="steps-content" *ngIf="current == 1">
+        <app-resume-form-two [childForm]="childForm"></app-resume-form-two>
+    </div>
+    <div class="steps-content" *ngIf="current == 2">
+        <app-resume-form-three
+            (eduLevels)="eduLevels($event)"
+            (eduFields)="eduFields($event)"
+            [childForm]="childForm"
+        ></app-resume-form-three>
+    </div>
+    <div class="steps-content" *ngIf="current == 3">
+        <app-resume-form-four [childForm]="childForm"></app-resume-form-four>
+    </div>
+    <div class="steps-content" *ngIf="current == 4">
+        <app-resume-form-five [childForm]="childForm"></app-resume-form-five>
+    </div>
+    <div class="steps-content" *ngIf="current == 5">
+        <app-resume-form-six [childForm]="childForm"></app-resume-form-six>
+    </div>
+    <div class="steps-content" *ngIf="current == 6">
+        <app-resume-form-seven
+            [educationLevels]="educationLevels"
+            [educationFields]="educationFields"
+            [childForm]="childForm"
+        ></app-resume-form-seven>
+    </div>
+    <div class="steps-action">
+        <div *ngIf="current + 1 == 1">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+            <button
+                class="step-action-next"
+                nz-button
+                (click)="next()"
+                *ngIf="current + 1 < total"
+                [disabled]="!this.childForm.controls.general.valid"
+            >
+                <span>{{ 'app.resume.next' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current + 1 == 2">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+            <button
+                class="step-action-next"
+                nz-button
+                (click)="next()"
+                *ngIf="current + 1 < total"
+                [disabled]="!this.childForm.controls.contact.valid"
+            >
+                <span>{{ 'app.resume.next' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current + 1 == 3">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+            <button
+                class="step-action-next"
+                nz-button
+                (click)="next()"
+                *ngIf="current + 1 < total"
+                [disabled]="!this.childForm.controls.education.valid"
+            >
+                <span>{{ 'app.resume.next' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current + 1 == 4">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+            <button
+                class="step-action-next"
+                nz-button
+                (click)="next()"
+                *ngIf="current + 1 < total"
+                [disabled]="!this.childForm.value.haveNoExperience && !this.childForm.controls.work.valid ? true : false"
+            >
+                <span>{{ 'app.resume.next' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current + 1 == 5">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+            <button class="step-action-next" nz-button (click)="next()" *ngIf="current + 1 < total">
+                <span>{{ 'app.resume.next' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current + 1 == 6">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+            <button
+                class="step-action-next"
+                nz-button
+                (click)="next()"
+                *ngIf="current + 1 < total"
+                [disabled]="!this.childForm.controls.certificate.valid"
+            >
+                <span>{{ 'app.resume.next' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current + 1 == 7">
+            <button class="step-action-previous" nz-button (click)="pre()" *ngIf="showPrevious">
+                <span>{{ 'app.resume.previous' | translate }}</span>
+            </button>
+        </div>
+        <div *ngIf="current < 6">
+            <span class="steps">Step {{ current + 1 }} of {{ total }}</span>
+        </div>
+    </div>
+</div>

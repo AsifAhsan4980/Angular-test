@@ -1,0 +1,57 @@
+<div class="employer-search-result-filter">
+    <nz-card>
+        <div>
+            <h3>{{ 'app.employeesearchfilter.filter' | translate }}</h3>
+        </div>
+        <div>
+            <nz-form-label>{{ 'app.employeesearchfilter.lastupdate' | translate }}</nz-form-label>
+            <input nz-input />
+        </div>
+        <div>
+            <nz-form-label>{{ 'app.employeesearchfilter.excludecanddate' | translate }}</nz-form-label>
+            <input nz-input />
+        </div>
+        <div>
+            <nz-form-label>{{ 'app.employeesearchfilter.availability' | translate }}</nz-form-label>
+            <input nz-input />
+        </div>
+        <div class="allign">
+            <h4>{{ 'app.resumeform4.worktitle' | translate }}</h4>
+            <ng-container>
+                <div *ngFor="let data of resumeInfo.jobTitle; let i = $index">
+                    <div nz-col [nzSpan]="24">
+                        <label nz-checkbox [ngModel]="checkTitleFilter" (ngModelChange)="onChange($event, data, 1)">{{ data }}</label>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="allign">
+            <h4>{{ 'app.resumeform4.company' | translate }}</h4>
+            <ng-container>
+                <div *ngFor="let data of resumeInfo.company">
+                    <div nz-col [nzSpan]="24">
+                        <label nz-checkbox [ngModel]="checkCompanyFilter" (ngModelChange)="onChange($event, data, 2)">{{ data }}</label>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="allign">
+            <h4>{{ 'app.resumeform4.workexperience' | translate }}</h4>
+            <div *ngFor="let data of experience">
+                <div nz-col [nzSpan]="24">
+                    <label nz-checkbox [ngModel]="checkExperienceFilter" (ngModelChange)="onChange($event, data, 3)"
+                        >{{ data === '11-40' ? 'Above 10' : data }} Years</label
+                    >
+                </div>
+            </div>
+        </div>
+        <div class="allign">
+            <h4>{{ 'app.employeesearchfilter.education' | translate }}</h4>
+            <div *ngFor="let data of education">
+                <div nz-col [nzSpan]="24">
+                    <label nz-checkbox [ngModel]="checkDegreeFilter" (ngModelChange)="onChange($event, data, 4)">{{ data }}</label>
+                </div>
+            </div>
+        </div>
+    </nz-card>
+</div>

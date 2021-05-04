@@ -1,0 +1,70 @@
+<div class="job-feed-one">
+    <div nz-row [nzGutter]="24">
+        <nz-card style="width: 100%">
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="24"
+                        >{{ 'app.postjob.companyname' | translate }}<sup class="custom-required-field">*</sup>
+                    </nz-form-label>
+                    <nz-form-control [nzSpan]="24">
+                        <input nz-input formControlName="companyName" />
+                        <nz-option *ngFor="let l of companyInfo" [nzLabel]="l.businessName" [nzValue]="l.companyName"> </nz-option>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="24"
+                        >{{ 'app.postjob.address' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                    >
+                    <nz-form-control [nzSpan]="24">
+                        <input nz-input />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="24"
+                        >{{ 'app.postjob.district' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                    >
+                    <nz-form-control [nzSpan]="24">
+                        <input nz-input />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="24"
+                        >{{ 'app.postjob.yourrole' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                    >
+                    <nz-form-control [nzSpan]="24">
+                        <input nz-input />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="24"
+                        >{{ 'app.postjob.yourname' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                    >
+                    <nz-form-control [nzSpan]="24">
+                        <input nz-input />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="24"
+                        >{{ 'app.postjob.contactnumber' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                    >
+                    <nz-form-control [nzSpan]="24">
+                        <input nz-input />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <button class="step-action-next" nzType="primary" nz-button (click)="next()">
+                <span>{{ 'app.postjob.continue' | translate }}</span>
+            </button>
+        </nz-card>
+    </div>
+</div>

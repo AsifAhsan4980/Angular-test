@@ -1,0 +1,12 @@
+<div class="post-job-container center-container">
+    <div class="post-job-header" *ngIf="steps == '0'">
+        <h1>
+            <b>{{ 'app.postjob.createjobpostingaccount' | translate }}</b>
+        </h1>
+    </div>
+    <div class="drop-resume-form">
+        <form nz-form [formGroup]="postJobForm">
+            <app-post-job (changeSteps)="changeSteps($event)"></app-post-job>
+        </form>
+    </div>
+</div>

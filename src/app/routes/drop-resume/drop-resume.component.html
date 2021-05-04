@@ -1,0 +1,43 @@
+<div class="drop-resume-container center-container">
+    <div class="drop-resume-header" *ngIf="steps == '0'">
+        <h1>
+            <b>{{ 'app.resume.createresume' | translate }}</b>
+        </h1>
+        <h1>{{ 'app.main.simple&easy' | translate }}</h1>
+        <span
+            ><b>{{ 'app.resume.or' | translate }}</b></span
+        >
+        <div class="upload-resume-opt">
+            <nz-upload [nzAccept]="'application/pdf'" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+                <button nz-button>{{ 'app.resume.uploadresume' | translate }}</button>
+            </nz-upload>
+        </div>
+    </div>
+    <div class="drop-resume-header-middle" *ngIf="isMiddle">
+        <p>
+            <span>{{ 'app.resume.createresume' | translate }}</span> {{ 'app.main.simple&easy' | translate }}
+        </p>
+    </div>
+    <div class="drop-resume-header-last" *ngIf="isLast">
+        <div nz-row>
+            <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="24">
+                <div nz-row>
+                    <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="24">
+                        <span class="site-logo">gonoJobs</span>
+                        <span> {{ 'app.resume.createresume' | translate }}</span> {{ 'app.main.simple&easy' | translate }}
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <button nz-button [nzLoading]="isLoading" (click)="saveSkill()">
+                            {{ 'app.resume.save&continue' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="drop-resume-form">
+        <form nz-form [formGroup]="resumeForm">
+            <app-resume-form (changeSteps)="changeSteps($event)"></app-resume-form>
+        </form>
+    </div>
+</div>

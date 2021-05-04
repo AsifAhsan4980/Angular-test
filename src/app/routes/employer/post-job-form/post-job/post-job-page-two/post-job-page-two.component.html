@@ -1,0 +1,120 @@
+<div class="post-job-page-two">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="24" class="sticky">
+            <nz-card>
+                <b>Job Posting</b>
+            </nz-card>
+            <nz-card>
+                <div nz-row [nzGutter]="24">
+                    <div class="margn" nz-col [nzMd]="6" [nzSm]="6" [nzXs]="6">
+                        <b>Company</b>
+                    </div>
+                    <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="18">
+                        <label *ngIf="!editMode" style="width: 20%">{{ value }}</label>
+                        <input nz-input [(ngModel)]="value" *ngIf="editMode" style="width: 50%" />
+                        <button nz-button nzType="primary" *ngIf="editMode" (click)="editMode = false">Okay</button>
+                        <i nz-icon class="editicon" nzType="edit" (click)="editMode = true" *ngIf="!editMode" nzTheme="outline"></i>
+                    </div>
+                    <div class="margn" nz-col [nzMd]="6" [nzSm]="6" [nzXs]="6">
+                        <b>Country</b>
+                    </div>
+                    <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="18">
+                        <label *ngIf="!editCountry" style="width: 20%">{{ country }}</label>
+                        <i
+                            nz-icon
+                            class="editicon"
+                            nzType="edit"
+                            (click)="editCountryMode($event)"
+                            *ngIf="!editCountry"
+                            nzTheme="outline"
+                        ></i>
+                        <nz-select
+                            [(ngModel)]="country"
+                            nzShowSearch
+                            nzAllowClear
+                            nzPlaceHolder="Bangladesh"
+                            *ngIf="editCountry"
+                            style="width: 50%"
+                        >
+                            <nz-option *ngFor="let l of countryLists" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                        </nz-select>
+                        <button nz-button nzType="primary" *ngIf="editCountry" (click)="editCountryMode($event)">Okay</button>
+                    </div>
+                    <div class="margn" nz-col [nzMd]="6" [nzSm]="6" [nzXs]="6">
+                        <b>Language</b>
+                    </div>
+                    <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="18">
+                        <label *ngIf="!editLanguage" style="width: 20%">{{ language }}</label>
+                        <i
+                            nz-icon
+                            class="editicon"
+                            nzType="edit"
+                            (click)="editLanguageMode($event)"
+                            *ngIf="!editLanguage"
+                            nzTheme="outline"
+                        ></i>
+                        <nz-select
+                            [(ngModel)]="language"
+                            nzShowSearch
+                            nzAllowClear
+                            nzPlaceHolder="Bangla"
+                            *ngIf="editLanguage"
+                            style="width: 50%"
+                        >
+                            <nz-option *ngFor="let l of LanguageLists" [nzLabel]="l.name" [nzValue]="l.name"> </nz-option>
+                        </nz-select>
+                        <button nz-button nzType="primary" *ngIf="editLanguage" (click)="editLanguageMode($event)">Okay</button>
+                    </div>
+                </div>
+            </nz-card>
+            <nz-card>
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                        <b>Industry</b>
+                    </div>
+                </div>
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="25">
+                        <nz-select ngModel="HealthCare" style="width: 100%; border: 1px solid rgb(216, 216, 216)">
+                            <nz-option nzValue="healthcare" nzLabel="Healthcare"></nz-option>
+                        </nz-select>
+                    </div>
+                </div>
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                        <b>Set Industry</b>
+                        <!-- <nz-radio-group [(ngModel)]="radioValue">
+                            <label nz-radio nzValue="A">Hospital</label>
+                            <label nz-radio nzValue="B">Diagonostic Center</label>
+                            <label nz-radio nzValue="C">Farmaceuticals</label>
+                            <label nz-radio nzValue="M">Any others</label>
+                        </nz-radio-group> -->
+                    </div>
+                </div>
+            </nz-card>
+            <nz-card>
+                <b>Job Title</b>
+                <input nz-input placeholder="Store Manager" [(ngModel)]="value" />
+                <b>Job Under This category</b>
+                <nz-radio-group [(ngModel)]="radioValue">
+                    <label nz-radio nzValue="A">Retail Store Manager</label>
+                    <label nz-radio nzValue="B">Distribution Store Manager</label>
+                    <label nz-radio nzValue="C">Warehouse Manager</label>
+                    <label nz-radio nzValue="M">Any Other</label>
+                </nz-radio-group>
+            </nz-card>
+            <nz-card>
+                <b>Job Location</b>
+                <nz-radio-group [(ngModel)]="radioValue">
+                    <label nz-radio nzValue="A">Single Loacation</label>
+                    <label nz-radio nzValue="B">Multiple Loacation</label>
+                    <label nz-radio nzValue="C">Remote</label>
+                    <label nz-radio nzValue="M">Traveling</label>
+                </nz-radio-group>
+            </nz-card>
+        </div>
+        <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+            <nz-card style="height: 50%"> </nz-card>
+        </div>
+    </div>
+</div>

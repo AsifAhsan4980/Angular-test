@@ -1,0 +1,52 @@
+export class General{
+    resumeId:string;
+    firstName:string;
+    lastName:string;
+    fathersName:string;
+    mothersName:string;
+    gender:string;
+    dateOfBirth:string;
+    currentAddress:string;
+    currentPostCode:string;
+    currentUpozila:string;
+    currentDistrict:string;
+    currentCountry:string;
+    permanentAddress:string;
+    permanentPostCode:string;
+    permanentUpozila:string;
+    permanentDistrict:string;
+    permanentCountry:string;
+    emailAddress:string;
+    telephoneNumber:string;
+    mobileNumber:string;
+    nationality:string;
+    maritialStatus:string;
+    religion:string;
+    onlinePresence:string;
+    constructor(data ?:any){
+        this.resumeId=(data) ? data.resumeId :'';
+        this.firstName=(data) ? data.firstName :'';
+        this.lastName=(data) ? data.lastName :'';
+        this.fathersName=(data) ? data.fathersName :'';
+        this.mothersName=(data) ? data.mothersName :'';
+        this.gender=(data) ? data.gender :'';
+        this.dateOfBirth=(data) ? data.dateOfBirth :'';
+        this.currentAddress=(data) ? data.currentAddress :'';
+        this.currentPostCode=(data) ? data.currentPostCode :'';
+        this.currentUpozila=(data) ? data.currentUpozila :'';
+        this.currentDistrict=(data) ? data.currentDistrict :'';
+        this.currentCountry=(data) ? data.currentCountry :'';
+        this.permanentAddress=(data) ? data.permanentAddress :'';
+        this.permanentPostCode=(data) ? data.permanentPostCode :'';
+        this.permanentUpozila=(data) ? data.permanentUpozila :'';
+        this.permanentDistrict=(data) ? data.permanentDistrict :'';
+        this.permanentCountry=(data) ? data.permanentCountry :'';
+        this.emailAddress=(data) ? data.emailAddress :'';
+        this.telephoneNumber=(data) ? data.telephoneNumber :'';
+        this.mobileNumber=(data) ? data.mobileNumber :'';
+        this.nationality=(data) ? data.nationality :'';
+        this.maritialStatus=(data) ? data.maritialStatus :'';
+        this.religion=(data) ? data.religion :'';
+        this.onlinePresence=(data) ? data.onlinePresence :'';
+    }
+}

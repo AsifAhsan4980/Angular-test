@@ -1,0 +1,167 @@
+<div class="resume-form-two">
+    <nz-card [nzBordered]="false" [nzTitle]="contactCardTitleTemp">
+        <form nz-form [formGroup]="childForm">
+            <div formGroupName="contact">
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzSpan]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.currentaddress' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="currentAddress" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.district' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="currentDistrict" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.upzilla' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="currentUpozila" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.postalcode' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="currentPostCode" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.country' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <nz-select
+                                    nzShowSearch
+                                    nzAllowClear
+                                    nzPlaceHolder="Select country"
+                                    formControlName="currentCountry"
+                                    (ngModelChange)="onChangeCountry($event)"
+                                >
+                                    <nz-option *ngFor="let l of countryLists" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzSpan]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.parmanentaddress' | translate
+                                }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="permanentAddress" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.district' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="permanentDistrict" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.upzilla' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="permanentUpozila" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.postalcode' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="permanentPostCode" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.country' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select country" formControlName="permanentCountry">
+                                    <nz-option *ngFor="let l of countryLists" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.email' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="emailAddress" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24"
+                                >{{ 'app.resumeform2.mobilenumber' | translate }}<sup class="custom-required-field">*</sup></nz-form-label
+                            >
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="mobileNumber" [pattern]="mobilePattern" />
+                                <span class="phone-hint">{{ phoneE164 }}</span>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24">{{ 'app.resumeform2.telephonenumber' | translate }}</nz-form-label>
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="telephoneNumber" />
+                                <span class="phone-hint">{{ phoneHint }}</span>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="24">{{ 'app.resumeform2.onlinepresence' | translate }}</nz-form-label>
+                            <nz-form-control [nzSpan]="24">
+                                <input nz-input formControlName="onlinePresence" />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>
+
+<ng-template #contactCardTitleTemp>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="24">
+            <h3>{{ 'app.resumeform2.contactinformation' | translate }}</h3>
+        </div>
+    </div>
+</ng-template>

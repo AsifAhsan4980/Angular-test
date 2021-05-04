@@ -1,0 +1,47 @@
+<div class="employee_feed-content">
+    <nz-card>
+        <div class="name">
+            <b>{{ summaryInfo.generalInfoDetails.firstName }} {{ summaryInfo.generalInfoDetails.lastName }}</b>
+        </div>
+        <div class="education">
+            <b>Education</b>
+            <ng-container>
+                <div *ngFor="let data of summaryInfo.educationDetails">
+                    <div class="subject">{{ data.educationLevel }}, {{ data.educationField }}</div>
+                    <div>
+                        <span>From {{ _monthFormatter(data.startMonth) }} {{ _yearFormatter(data.startYear) }}</span>
+                        <span *ngIf="data.endMonth != '' && data.endYear != ''">
+                            To {{ _monthFormatter(data.endMonth) }} {{ _yearFormatter(data.endYear) }}</span
+                        >
+                    </div>
+                    <div class="institution">
+                        <span>{{ data.institution }}</span
+                        ><br />
+                        <span>{{ data.city }}, {{ data.country }}</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="experience">
+            <b>Experience</b>
+            <ng-container *ngIf="summaryInfo.workExperienceDetails.length > 0">
+                <div *ngFor="let data of summaryInfo.workExperienceDetails">
+                    {{ data.title }}
+                    <div>
+                        <p>
+                            <span>From {{ _monthFormatter(data.startMonth) }} {{ _yearFormatter(data.startYear) }}</span>
+                            <span *ngIf="data.endMonth != '' && data.endYear != ''">
+                                To {{ _monthFormatter(data.endMonth) }} {{ _yearFormatter(data.endYear) }}</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="skill">
+            <ng-container>
+                <nz-tag [nzColor]="'green'" *ngFor="let data of summaryInfo.skillDetails">{{ data.skillName }}</nz-tag>
+            </ng-container>
+        </div>
+    </nz-card>
+</div>

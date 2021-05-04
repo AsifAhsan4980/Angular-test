@@ -1,0 +1,75 @@
+<div class="employer-search-resume-full">
+    <nz-card>
+        <div *ngIf="resumeDeatails.length > 0">
+            <div class="candiade-name">
+                <h1>{{ resumeDeatails[0].generalInfoDetails.firstName }} {{ resumeDeatails[0].generalInfoDetails.lastName }}</h1>
+            </div>
+            <div class="intro">
+                <div>
+                    <b>{{ resumeDeatails[1].workExperienceDetails.title }}</b>
+                </div>
+                <div>{{ resumeDeatails[1].workExperienceDetails.city }}</div>
+                <div>{{ resumeDeatails[0].generalInfoDetails.emailAddress }}</div>
+                <div>+88{{ resumeDeatails[0].generalInfoDetails.mobileNumber }}</div>
+                <div class="intro-des">
+                    {{ resumeDeatails[1].workExperienceDetails.description }}
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-title">{{ 'app.resumeform4.workexperience' | translate }}</div>
+            <nz-divider></nz-divider>
+            <div *ngIf="resumeDeatails.length > 0">
+                <div *ngFor="let data of resumeDeatails[1].workExperienceDetails">
+                    <div class="inside-cat-title">{{ data.title }}</div>
+                    <div>{{ data.company }}, {{ data.city }}</div>
+                    <div>
+                        <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                        <span *ngIf="data.endMonth != '' && data.endYear != ''"> To {{ data.endMonth }} {{ data.endYear }}</span>
+                    </div>
+                    <div class="intro-des">
+                        <p>{{ data.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-title">{{ 'app.employeesearchfilter.education' | translate }}</div>
+            <nz-divider></nz-divider>
+            <div *ngIf="resumeDeatails.length > 0">
+                <div *ngFor="let data of resumeDeatails[2].educationDetails">
+                    <div class="inside-cat-title">{{ data.educationLevel }} in {{ data.educationField }}</div>
+                    <div>{{ data.institution }}</div>
+                    <div>
+                        <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                        <span *ngIf="data.endMonth != '' && data.endYear != ''"> To {{ data.endMonth }} {{ data.endYear }}</span>
+                    </div>
+                    <p>{{ data.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-title">{{ 'app.resumeform5.skills' | translate }}</div>
+            <nz-divider></nz-divider>
+            <div *ngIf="resumeDeatails.length > 0">
+                <div *ngFor="let data of resumeDeatails[3].skillDetails" style="display: inline-flex">
+                    <nz-tag [nzColor]="'green'">{{ data.skillName }}</nz-tag>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-title">{{ 'app.resumeform6.licence&certificates' | translate }}</div>
+            <nz-divider></nz-divider>
+            <div *ngIf="resumeDeatails.length > 0">
+                <div *ngFor="let data of resumeDeatails[4].licenseCertificateDeatils">
+                    <div class="inside-cat-title">{{ data.title }}</div>
+                    <div>
+                        <span>From {{ data.startMonth }} {{ data.startYear }}</span>
+                        <span *ngIf="data.endMonth != '' && data.endYear != ''"> To {{ data.endMonth }} {{ data.endYear }}</span>
+                    </div>
+                    <p>{{ data.description }}</p>
+                </div>
+            </div>
+        </div>
+    </nz-card>
+</div>

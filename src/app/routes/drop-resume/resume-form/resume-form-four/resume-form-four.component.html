@@ -1,0 +1,149 @@
+<div class="resume-form-four">
+    <nz-card [nzBordered]="false" [nzTitle]="workCardTitleTemp">
+        <form nz-form [formGroup]="childForm">
+            <div formArrayName="work">
+                <div *ngFor="let work of getControls(); let i = index; let last = last">
+                    <div [formGroupName]="i">
+                        <nz-card class="data-card">
+                            <div nz-row [nzGutter]="24">
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform4.worktitle' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <input nz-input formControlName="title" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform4.company' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <input nz-input formControlName="company" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform3.citydistrict' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <nz-select nzShowSearch nzAllowClear formControlName="city">
+                                                <nz-option *ngFor="let l of districtList" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform2.country' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <nz-select nzShowSearch nzAllowClear formControlName="country">
+                                                <nz-option *ngFor="let l of countryLists" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzSpan]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24">{{ 'app.resumeform3.timeperiod' | translate }}</nz-form-label>
+                                        <nz-form-control [nzSpan]="24">
+                                            <label nz-checkbox formControlName="isWorking">{{
+                                                'app.resumeform3.currentlyworkhere' | translate
+                                            }}</label>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform3.from' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="12">
+                                            <nz-select nzPlaceHolder="Month" formControlName="startMonth">
+                                                <nz-option *ngFor="let l of months" [nzLabel]="l.name" [nzValue]="l.id"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                        <nz-form-control [nzSpan]="12" class="form-to-margin">
+                                            <nz-select
+                                                nzPlaceHolder="Year"
+                                                formControlName="startYear"
+                                                (ngModelChange)="changeFromYear($event)"
+                                            >
+                                                <nz-option *ngFor="let l of years" [nzLabel]="l.year" [nzValue]="l.year"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24" *ngIf="!childForm.value.work[i].isWorking">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24">{{ 'app.resumeform3.to' | translate }}</nz-form-label>
+                                        <nz-form-control [nzSpan]="12">
+                                            <nz-select nzPlaceHolder="Month" formControlName="endMonth">
+                                                <nz-option *ngFor="let l of months" [nzLabel]="l.name" [nzValue]="l.id"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                        <nz-form-control [nzSpan]="12" class="form-to-margin">
+                                            <nz-select nzPlaceHolder="Year" formControlName="endYear">
+                                                <nz-option *ngFor="let l of endYears" [nzLabel]="l.year" [nzValue]="l.year"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform4.workdescription' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <textarea rows="5" nz-input formControlName="description"></textarea>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col nzSpan="24" *ngIf="i > 0">
+                                    <div class="remove" (click)="removeExperience(childForm.controls.work, i)">
+                                        <span>{{ 'app.resumeform4.removework' | translate }}</span>
+                                        <i nz-icon class="contact-icon" nzType="delete" nzTheme="fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </nz-card>
+                    </div>
+                </div>
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                        <div class="add" (click)="addExperience(childForm.controls.work)">
+                            <span>{{ 'app.resume.addmore' | translate }}</span
+                            ><i nz-icon nzType="plus" nzTheme="outline"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label class="experience-checkbox" nz-checkbox formControlName="haveNoExperience">{{
+                    'app.resumeform4.noworkexperience' | translate
+                }}</label>
+            </div>
+        </form>
+    </nz-card>
+</div>
+<ng-template #workCardTitleTemp>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzMd]="18" [nzSm]="18" [nzXs]="24">
+            <h3>{{ 'app.resumeform4.workexperience' | translate }}</h3>
+        </div>
+        <div nz-col [nzMd]="6" [nzSm]="6" [nzXs]="24" class="required"><span>* </span>{{ 'app.resume.required' | translate }}</div>
+    </div>
+</ng-template>

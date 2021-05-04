@@ -1,0 +1,103 @@
+<div class="resume-form-six">
+    <nz-card [nzBordered]="false" [nzTitle]="licenseCardTitleTemp">
+        <form nz-form [formGroup]="childForm">
+            <div formArrayName="certificate">
+                <div *ngFor="let certificate of getControls(); let i = index; let last = last">
+                    <div [formGroupName]="i">
+                        <nz-card class="data-card">
+                            <div nz-row [nzGutter]="24">
+                                <div nz-col [nzSpan]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform6.title' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <input nz-input formControlName="title" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzSpan]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24">{{ 'app.resumeform3.timeperiod' | translate }}</nz-form-label>
+                                        <nz-form-control [nzSpan]="24">
+                                            <label nz-checkbox formControlName="isWorking">{{
+                                                'app.resumeform3.currentlyworkhere' | translate
+                                            }}</label>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform3.from' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="12">
+                                            <nz-select nzPlaceHolder="Month" formControlName="startMonth">
+                                                <nz-option *ngFor="let l of months" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                        <nz-form-control [nzSpan]="12" class="form-to-margin">
+                                            <nz-select
+                                                nzPlaceHolder="Year"
+                                                formControlName="startYear"
+                                                (ngModelChange)="changeFromYear($event)"
+                                            >
+                                                <nz-option *ngFor="let l of years" [nzLabel]="l.year" [nzValue]="l.year"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24" *ngIf="!childForm.value.certificate[i].isWorking">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24">{{ 'app.resumeform3.to' | translate }}</nz-form-label>
+                                        <nz-form-control [nzSpan]="12">
+                                            <nz-select nzPlaceHolder="Month" formControlName="endMonth">
+                                                <nz-option *ngFor="let l of months" [nzLabel]="l.name" [nzValue]="l.name"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                        <nz-form-control [nzSpan]="12" class="form-to-margin">
+                                            <nz-select nzPlaceHolder="Year" formControlName="endYear">
+                                                <nz-option *ngFor="let l of endYears" [nzLabel]="l.year" [nzValue]="l.year"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+                                    <nz-form-item>
+                                        <nz-form-label [nzSpan]="24"
+                                            >{{ 'app.resumeform4.workdescription' | translate
+                                            }}<sup class="custom-required-field">*</sup></nz-form-label
+                                        >
+                                        <nz-form-control [nzSpan]="24">
+                                            <textarea rows="5" nz-input formControlName="description"></textarea>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <div nz-row nzSpan="24" *ngIf="i > 0">
+                                    <div class="remove" (click)="removeCertificate(childForm.controls.certificate, i)">
+                                        <span>{{ 'app.resumeform6.removeklicence' | translate }}</span>
+                                        <i nz-icon class="contact-icon" nzType="delete" nzTheme="fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </nz-card>
+                    </div>
+                </div>
+                <div class="add" (click)="addCertificate(childForm.controls.certificate)">
+                    <span>{{ 'app.resume.addmore' | translate }}</span
+                    ><i nz-icon nzType="plus" nzTheme="outline"></i>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>
+
+<ng-template #licenseCardTitleTemp>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="24">
+            <h3>{{ 'app.resumeform6.licence&certificates' | translate }}</h3>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,75 @@
+<div class="job-search">
+    <nz-card [nzBordered]="false">
+        <form nz-form class="ant-advanced-search-form">
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzMd]="11" [nzSm]="11" [nzXs]="24">
+                    <nz-input-group [nzPrefix]="prefixJobTemplate" style="width: 100%">
+                        <nz-select
+                            name="name"
+                            id="name"
+                            [nzPlaceHolder]="'Job Titles, keyword or company'"
+                            [nzShowSearch]="true"
+                            [nzShowArrow]="false"
+                            style="width: 100%"
+                        >
+                            <nz-option></nz-option>
+                        </nz-select>
+                    </nz-input-group>
+                </div>
+                <div nz-col [nzMd]="10" [nzSm]="10" [nzXs]="24">
+                    <nz-input-group [nzPrefix]="prefixLocTemplate" [nzSuffix]="suffixLocTemplate" style="width: 100%">
+                        <nz-select
+                            name="location"
+                            id="location"
+                            [nzPlaceHolder]="'Dhaka'"
+                            [nzShowSearch]="true"
+                            [nzShowArrow]="false"
+                            style="width: 100%"
+                        >
+                            <nz-option></nz-option>
+                        </nz-select>
+                    </nz-input-group>
+                </div>
+                <div nz-col [nzMd]="3" [nzSm]="3" [nzXs]="24">
+                    <button nz-button class="job-search-btn">{{ 'app.main.findjobs' | translate }}</button>
+                </div>
+            </div>
+        </form>
+        <div nz-row [nzGutter]="24" class="banner">
+            <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                <div class="banner-item">
+                    <span class="banner-item-text"
+                        ><b>{{ 'app.main.employees' | translate }}</b></span
+                    ><br />
+                    <a [routerLink]="['drop-resume']" class="banner-item-text"
+                        ><b>{{ 'app.main.postresume' | translate }}</b></a
+                    >
+                    {{ 'app.main.simple&easy' | translate }}
+                </div>
+            </div>
+            <div nz-col [nzMd]="12" [nzSm]="12" [nzXs]="24">
+                <div>
+                    <span [routerLink]="['employer']" class="banner-item-text"
+                        ><b>{{ 'app.main.employers' | translate }}</b></span
+                    >
+                    <br />
+                    <span [routerLink]="['postJob']" class="banner-item-text"
+                        ><b>{{ 'app.main.postjob' | translate }}</b></span
+                    >
+                    {{ 'app.main.findemployee' | translate }}
+                </div>
+            </div>
+        </div>
+    </nz-card>
+</div>
+
+<ng-template #prefixJobTemplate>
+    <b class="suffix-text">What</b>
+</ng-template>
+
+<ng-template #prefixLocTemplate>
+    <b class="suffix-text">Where</b>
+</ng-template>
+<ng-template #suffixLocTemplate>
+    <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+</ng-template>
